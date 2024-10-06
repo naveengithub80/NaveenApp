@@ -21,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.digital.entity.Attendance;
 import com.digital.entity.Employee;
 import com.digital.entity.Work;
+import com.digital.repository.AttendanceRepository;
 import com.digital.repository.EmployeeRepository;
 import com.digital.repository.WorkRepository;
 
@@ -38,6 +40,10 @@ public class EmployeeController {
     
     @Autowired
     private WorkRepository workRepository;
+    
+    
+    @Autowired
+    private AttendanceRepository attendanceRepository;
     
     
 
@@ -148,6 +154,35 @@ public class EmployeeController {
     
     
     
+    @GetMapping("/work/search")
+    public ResponseEntity<List<Work>> getWorkDetailsByFilter(
+            @RequestParam(value = "employeeId", required = false) Long employeeId,
+            @RequestParam(value = "date", required = false) String date) {
+        try {
+            List<Work> filteredWorkList = workRepository.findAll();
+            
+            // Filter by employeeId if provided
+            if (employeeId != null) {
+                filteredWorkList = filteredWorkList.stream()
+                    .filter(work -> work.getEmployeeId().equals(employeeId))
+                    .toList();
+            }
+
+            // Filter by date if provided
+            if (date != null) {
+                filteredWorkList = filteredWorkList.stream()
+                    .filter(work -> work.getWorkDate().equals(date))
+                    .toList();
+            }
+
+            return new ResponseEntity<>(filteredWorkList, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+    
+    
     
     
     
@@ -169,6 +204,34 @@ public class EmployeeController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ // POST method to record attendance
+    @PostMapping("/attendance")
+    public ResponseEntity<List<Attendance>> recordAttendance(@RequestBody List<Attendance> attendanceList) {
+        List<Attendance> savedAttendanceList = attendanceRepository.saveAll(attendanceList);  // Save all attendance records
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedAttendanceList);
+    }
+
+
+    // GET method to retrieve all attendance records
+    @GetMapping("/attendance")
+    public ResponseEntity<List<Attendance>> getAllAttendanceRecords() {
+        List<Attendance> attendanceList = attendanceRepository.findAll();
+        return ResponseEntity.ok(attendanceList);
+    }
+
+    
+    
     
     
     
