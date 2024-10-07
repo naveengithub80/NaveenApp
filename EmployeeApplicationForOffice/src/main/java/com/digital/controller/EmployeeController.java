@@ -1,6 +1,7 @@
 package com.digital.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;  // Correct import
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -87,7 +89,8 @@ public class EmployeeController {
     
     
     
-    
+ 
+    // GET method to retrieve employee by ID
     @GetMapping("/employees/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable long id) {
         Optional<Employee> employee = employeeRepository.findById(id);
@@ -225,16 +228,69 @@ public class EmployeeController {
 
     // GET method to retrieve all attendance records
     @GetMapping("/attendance")
-    public ResponseEntity<List<Attendance>> getAllAttendanceRecords() {
+    public ResponseEntity<List<Map<String, Object>>> getAllAttendanceRecords() {
         List<Attendance> attendanceList = attendanceRepository.findAll();
-        return ResponseEntity.ok(attendanceList);
+
+        // Create a list to hold the response with employee names
+        List<Map<String, Object>> attendanceWithEmployeeDetails = new ArrayList<>();
+
+        // Loop through attendance records and fetch the associated employee details
+        for (Attendance attendance : attendanceList) {
+            Optional<Employee> employee = employeeRepository.findById(attendance.getEmployeeId());
+            
+            if (employee.isPresent()) {
+                // Create a map to hold the combined data
+                Map<String, Object> attendanceDetails = new HashMap<>();
+                attendanceDetails.put("employeeId", attendance.getEmployeeId());
+                attendanceDetails.put("employeeName", employee.get().getEmployeeName());
+                attendanceDetails.put("status", attendance.getStatus());
+                attendanceDetails.put("timestamp", attendance.getTimestamp());
+
+                attendanceWithEmployeeDetails.add(attendanceDetails);
+            }
+        }
+
+        return ResponseEntity.ok(attendanceWithEmployeeDetails);
     }
+
 
     
     
     
     
     
+    
+    
+    
+    
+    @GetMapping("/attendance/search")
+    public ResponseEntity<List<Map<String, Object>>> getAttendanceByFilter(
+            @RequestParam(value = "employeeId", required = false) Long employeeId,
+            @RequestParam(value = "date", required = false) String date) {
+        
+        List<Map<String, Object>> filteredAttendance = attendanceRepository.findAllAttendanceWithEmployeeName();
+        
+        // Filter by employeeId if provided
+        if (employeeId != null) {
+            filteredAttendance = filteredAttendance.stream()
+                .filter(att -> att.get("employeeId").equals(employeeId))
+                .toList();
+        }
+        
+        // Filter by date if provided
+        if (date != null) {
+            filteredAttendance = filteredAttendance.stream()
+                .filter(att -> att.get("timestamp").toString().contains(date))
+                .toList();
+        }
+
+        return new ResponseEntity<>(filteredAttendance, HttpStatus.OK);
+    }
+
+    
+    
+    
+  
     
     
     

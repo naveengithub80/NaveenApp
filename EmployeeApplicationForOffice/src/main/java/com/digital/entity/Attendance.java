@@ -19,6 +19,8 @@ public class Attendance {
     private long employeeId;  // Foreign key to employee
     private String status;     // "present" or "absent"
     private LocalDateTime timestamp;  // Date and time of attendance
+    
+    
 
     // Constructors, getters and setters
     public Attendance() {}
