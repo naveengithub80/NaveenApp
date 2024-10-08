@@ -1,0 +1,86 @@
+<nav style="margin: auto" class="navbar navbar-expand-lg bg-skyblue">
+
+<a style="color: white;" class="navbar-brand" href="#"><b>Digital Soul</b></a>
+<!-- Toggler button for mobile view -->
+<button class="navbar-toggler" type="button" 
+data-bs-toggle="collapse" 
+data-bs-target="#navbarSupportedContent" 
+aria-controls="navbarSupportedContent" 
+aria-expanded="false" 
+aria-label="Togglenavigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<!-- Links aligned to the right -->
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+    
+
+<li class="nav-item">
+<a class="nav-link active" aria-current="page" href="javascript:void(0);" routerLink="/addEmployee">Add Employees</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="javascript:void(0);" routerLink="/viewwork">show Work</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="javascript:void(0);" routerLink="/showattendance">show Attendance</a>
+</li>    
+
+
+<li class="nav-item">
+    <a  class="nav-link active" aria-current="page" href="javascript:void(0);" (click)="logout()">Logout</a>
+  </li>
+
+</ul>
+</div>
+
+
+
+</nav>
+
+<div class="container">
+
+<hr>
+<h2 style="text-align: center;margin-top: 20px;">Admin Dashboard</h2>
+<a style="color:rgb(86,86,86); font-size: x-large;"><marquee behavior="scroll" direction="left">welcome to Admin Dashboard. </marquee></a>
+
+<div class="tableFixHead">
+    <br>
+
+</div>
+
+</div>
+<table class="table table-striped">
+
+    <thead>
+
+        <tr>
+
+            <th>Id</th>
+            <th>employeeName</th>
+            <th>role</th>
+            <th>salary</th>
+            <th>qualification</th>
+            <th>dateOfJoin</th>
+            <th>email</th>
+            <th>address</th>
+            <th>photo</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees">
+            <td>{{employee.id}}</td>
+            <td>{{employee.employeeName}}</td>
+            <td>{{employee.role}}</td>
+            <td>{{employee.salary}}</td>
+            <td>{{employee.qualification}}</td>
+            <td>{{employee.dateOfJoin}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.address}}</td>
+            <td><img [src]="getEmployeePhotoUrl(employee.id)" alt="Employee Photo" width="100" height="100"></td>
+            
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,65 @@
+
+
+
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-skyblue">
+  <a class="navbar-brand ml-5" href="#">
+    <h3><b>Digital Soul</b></h3>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto"></ul>
+    <div class="mx-2">
+      <button style="margin: 5px;" class="btn btn-danger"><a style="color:white;" routerLink="/home">Home</a></button>
+      
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+<!-- attendance-sheet.component.html -->
+<div class="container">
+  <h1>Attendance Sheet</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Date and Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.employeeId }}</td>
+        <td>{{ employee.employeeName }}</td>
+        <td>
+          <select [(ngModel)]="employee.status">
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+          </select>
+        </td>
+        <td>
+          <input type="datetime-local" [(ngModel)]="employee.dateTime" />
+        </td>
+      </tr>
+    </tbody>
+    
+  </table>
+  <button (click)="submitAttendance()">Submit Attendance</button>
+</div>

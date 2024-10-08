@@ -1,0 +1,113 @@
+
+
+
+
+
+
+
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-skyblue">
+  <div class="mx-2">
+    <button style="margin: 5px;" class="btn btn-danger"><a style="color:white;" routerLink="/home">Home</a></button>
+    
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto"></ul>
+    
+    <a class="navbar-brand ml-5" href="#">
+      <h3><b>Digital Soul</b></h3>
+    </a>
+  </div>
+</nav>
+
+
+
+
+
+
+<div class="container mt-5">
+  <div class="card shadow-lg">
+    <div class="card-header bg-primary text-white text-center">
+      <h2>Create New Employee</h2>
+    </div>
+    <div class="card-body p-4">
+      <form #employeeForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <!-- Employee Name -->
+        <div class="mb-3">
+          <label for="employeeName" class="form-label">Employee Name</label>
+          <input type="text" id="employeeName" class="form-control" [(ngModel)]="employee.employeeName" name="employeeName" >
+        </div>
+
+        <!-- Role -->
+        <div class="mb-3">
+          <label for="role" class="form-label">Role</label>
+          <input type="text" id="role" class="form-control" [(ngModel)]="employee.role" name="role" >
+        </div>
+
+        <!-- Salary -->
+        <div class="mb-3">
+          <label for="salary" class="form-label">Salary</label>
+          <input type="number" id="salary" class="form-control" [(ngModel)]="employee.salary" name="salary" >
+        </div>
+
+        <!-- Qualification -->
+        <div class="mb-3">
+          <label for="qualification" class="form-label">Qualification</label>
+          <input type="text" id="qualification" class="form-control" [(ngModel)]="employee.qualification" name="qualification" >
+        </div>
+
+        <!-- Date of Join -->
+        <div class="mb-3">
+          <label for="dateOfJoin" class="form-label">Date of Join</label>
+          <input type="date" id="dateOfJoin" class="form-control" [(ngModel)]="employee.dateOfJoin" name="dateOfJoin" >
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" class="form-control" [(ngModel)]="employee.email" name="email" >
+        </div>
+
+        <!-- Address -->
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <textarea id="address" class="form-control" [(ngModel)]="employee.address" name="address" rows="3" ></textarea>
+        </div>
+
+       <!-- Photo (File Upload) -->
+<div class="mb-3">
+  <label for="photo" class="form-label">Upload Photo</label>
+  <input type="file" id="photo" class="form-control" (change)="onFileChange($event)" required>
+
+  <!-- Photo Preview -->
+  <div *ngIf="photoPreview" class="mt-3">
+    <img [src]="photoPreview" alt="Photo Preview" class="img-thumbnail" style="max-height: 200px;">
+  </div>
+</div>
+
+
+        <!-- Submit Button -->
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-success btn-block" [disabled]="!employeeForm.form.valid">Create Employee</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+

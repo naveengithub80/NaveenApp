@@ -1,0 +1,55 @@
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-skyblue">
+  <a class="navbar-brand ml-5" href="#">
+    <h3><b>Digital Soul</b></h3>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto"></ul>
+    <div class="mx-2">
+      <button style="margin: 5px;" class="btn btn-danger"><a style="color:white;" routerLink="/home">Home</a></button>
+      
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+<div *ngIf="message" [ngClass]="messageClass" class="notification">
+  {{ message }}
+</div>
+
+<form [formGroup]="workForm" (ngSubmit)="onSubmit()">
+  <!-- Form fields -->
+  <div>
+    <label for="employeeId">Employee ID</label>
+    <input id="employeeId" formControlName="employeeId" type="text" />
+  </div>
+  <div>
+    <label for="employeeName">Employee Name</label>
+    <input id="employeeName" formControlName="employeeName" type="text" />
+  </div>
+  <div>
+    <label for="workDate">Date</label>
+    <input id="workDate" formControlName="workDate" type="date" />
+  </div>
+  <div>
+    <label for="workDetails">Work Details</label>
+    <textarea id="workDetails" formControlName="workDetails"></textarea>
+  </div>
+  
+  <button type="submit">Submit</button>
+</form>

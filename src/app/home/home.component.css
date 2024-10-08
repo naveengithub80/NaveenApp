@@ -1,0 +1,201 @@
+
+button a {
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: rgb(63, 139, 225); /* Set the background color to blue */
+  color: white; /* Text color for contrast */
+}
+
+.navbar a {
+  color: white; /* Ensures that the links within the nav bar are white */
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #6594e6; /* Button background color */
+  color: white; /* Text color */
+  border: none;
+  border-radius: 10px; /* Adjust this value to change the curvature */
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6594e6; /* Darker shade on hover */
+}
+
+
+
+
+/* home.component.css */
+.carousel-item {
+height: 300px; /* Set your desired height */
+}
+
+.carousel-item img {
+height: 100%;
+object-fit: cover; /* Ensures the image covers the whole area */
+width: 100%;
+}
+
+/* Custom CSS for sliding direction */
+.carousel-inner {
+overflow: hidden;
+}
+
+.carousel-item {
+transition: transform 1s ease;  /* Adjust the duration for slower sliding */
+}
+
+.carousel-item-next, .carousel-item-prev {
+transform: translateX(100%);
+}
+
+.carousel-item-prev {
+transform: translateX(-100%);
+}
+
+.carousel-item-next.carousel-item-left, .carousel-item-prev.carousel-item-right {
+transform: translateX(0);
+}
+
+
+.carousel-item-prev.carousel-item-prev {
+transform: translateX(0); /* For the item sliding out */
+}
+
+.carousel-item-next.carousel-item-next {
+transform: translateX(0); /* For the item sliding in */
+}
+
+
+.carousel-item-next, .carousel-item-prev {
+position: absolute;
+top: 0;
+bottom: 0;
+width: 100%;
+display: block;
+}
+
+.carousel-item-next {
+transform: translateX(100%); /* Start position for the next item */
+}
+
+.carousel-item-prev {
+transform: translateX(-100%); /* Start position for the previous item */
+}
+
+.carousel-item-next.carousel-item-left, .carousel-item-prev.carousel-item-right {
+transform: translateX(0); /* End position for the active item */
+}
+
+
+
+
+
+
+
+
+
+
+/* Add border radius to only the top corners of the navbar */
+.navbar {
+border-top-left-radius: 8px; /* Adjust the value as needed */
+border-top-right-radius: 8px; /* Adjust the value as needed */
+
+}
+
+
+
+
+
+
+
+.container {
+margin-top: 50px;
+}
+
+.ceo-photo {
+width: 300px;
+height: 300px;
+border-radius: 50%;
+object-fit: cover; /* Ensures the image maintains aspect ratio */
+ /* Optional: Add a border around the image */
+}
+
+.text-right {
+text-align: right;
+}
+
+
+
+
+
+
+/* Style for the container with CEO details */
+.container {
+  
+  padding: 20px; /* Adds some padding around the content */
+  border-radius: 10px; /* Adds rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a slight shadow */
+}
+
+
+
+
+
+
+.container {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  text-align: justify;
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 30px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-in-out;
+}
+
+p:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  height: 3px;
+  width: 60px;
+  background-color: #ff7f50;
+  border-radius: 5px;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+p:hover:before {
+  opacity: 1;
+  width: 100px;
+}
+
+p.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
+

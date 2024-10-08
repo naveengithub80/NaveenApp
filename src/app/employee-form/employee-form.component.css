@@ -1,0 +1,114 @@
+
+
+/* Style the navbar */
+.navbar-skyblue {
+  background-color: #87CEEB; /* Sky blue background */
+  border-bottom: 2px solid #007BFF; /* Bottom border */
+}
+
+.navbar-skyblue .navbar-brand h3 {
+  color: white;
+  font-weight: bold;
+}
+
+.navbar-skyblue .btn-danger a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-skyblue .btn-danger:hover {
+  background-color: #ff4d4d;
+}
+
+
+
+
+
+
+
+
+.container {
+    max-width: 600px;
+    
+  }
+  
+  .card-header {
+    background-color: #4f91dc;
+    color: white;
+
+  }
+  
+  .form-label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .form-control {
+    border-radius: 10px;
+    border: 2px solid #ddd;
+  }
+  
+  .btn-block {
+    background-color: #4f91dc;
+    color: white;
+    border-radius: 10px;
+  }
+  
+  .btn-block:hover {
+    background-color: #4f91dc;
+  }
+  
+  .mb-3 input,
+  .mb-3 textarea {
+    background-color: #f9f9f9;
+    padding: 10px;
+  }
+
+  /* Style the file input */
+input[type="file"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  input[type="file"]::file-selector-button {
+    background-color: #4f91dc;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  input[type="file"]::file-selector-button:hover {
+    background-color: #4f91dc;
+  }
+  
+  
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

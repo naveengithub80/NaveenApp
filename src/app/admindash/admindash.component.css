@@ -1,0 +1,27 @@
+.navbar {
+  
+  background-color: rgb(63, 139, 225); /* Set the background color to blue */
+  color: white; /* Text color for contrast */
+}
+
+.navbar a {
+  color: white; /* Ensures that the links within the nav bar are white */
+    float: left;
+  }
+  
+
+
+
+  button {
+    padding: 10px 20px;
+    background-color: #3e7de9fc; /* Button background color */
+    color: white; /* Text color */
+    border: none;
+    border-radius: 10px; /* Adjust this value to change the curvature */
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #6594e6; /* Darker shade on hover */
+  }

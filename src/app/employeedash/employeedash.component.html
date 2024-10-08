@@ -1,0 +1,50 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-skyblue">
+    <a class="navbar-brand ml-5" href="#">
+      <h3><b>Digital Soul</b></h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto"></ul>
+      <div class="mx-2">
+        <button style="margin: 5px;" class="btn btn-danger"><a style="color:white;" routerLink="/home">Home</a></button>
+        <button style="margin: 5px;" class="btn btn-danger"><a style="color:white;" routerLink="/addwork">Add your work</a></button>
+        
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Search bar and employee details -->
+  <div class="container">
+    <div class="search-container">
+      <h2>Search Employee by ID</h2>
+      <input type="number" [(ngModel)]="employeeId" placeholder="Enter Employee ID">
+      <button class="btn btn-primary" (click)="searchEmployee()">Search</button>
+    </div>
+  
+    <div *ngIf="employee" class="employee-details">
+      <h3>Employee Details</h3>
+      <p><strong>ID:</strong> {{ employee.id }}</p>
+      <p><strong>Name:</strong> {{ employee.employeeName }}</p>
+      <p><strong>Role:</strong> {{ employee.role }}</p>
+      <p><strong>Salary:</strong> {{ employee.salary }}</p>
+      <p><strong>Qualification:</strong> {{ employee.qualification }}</p>
+      <p><strong>Date of Joining:</strong> {{ employee.dateOfJoin }}</p>
+      <p><strong>Email:</strong> {{ employee.email }}</p>
+      <p><strong>Address:</strong> {{ employee.address }}</p>
+  
+      <div *ngIf="photoUrl">
+        <h3>Photo:</h3>
+        <img [src]="photoUrl" alt="Employee Photo" width="200">
+      </div>
+    </div>
+  
+    <div *ngIf="errorMessage">
+      <p>{{ errorMessage }}</p>
+    </div>
+  </div>
+  
